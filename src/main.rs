@@ -22,17 +22,7 @@ fn handle_operation(operation: &String, file_content: String) {
     }
 }
 
-fn word_counter(file_content: String) -> u128 {
-    let characters: Vec<char> = file_content.chars().collect();
-    let mut word_count: u128 = 0;
-    for i in 0..characters.len() - 1 {
-        let current = characters[i];
-        let next = characters[i + 1];
-        word_count += if !current.is_whitespace() && next.is_whitespace() {
-            1
-        } else {
-            0
-        }
-    }
-    word_count
+fn word_counter(file_content: String) -> usize {
+    let words: Vec<&str> = file_content.split_whitespace().collect();
+    words.len()
 }
