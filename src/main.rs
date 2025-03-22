@@ -28,14 +28,10 @@ fn word_counter(file_content: String) -> u128 {
     for i in 0..characters.len() - 1 {
         let current = characters[i];
         let next = characters[i + 1];
-        word_count += if current.is_whitespace() {
-            0
+        word_count += if !current.is_whitespace() && next.is_whitespace() {
+            1
         } else {
-            if !current.is_whitespace() && next.is_whitespace() {
-                1
-            } else {
-                0
-            }
+            0
         }
     }
     word_count
